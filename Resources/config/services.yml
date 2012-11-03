@@ -1,0 +1,25 @@
+parameters:
+    zorbus_poll.poll.admin.class: Zorbus\PollBundle\Admin\PollAdmin
+    zorbus_poll.option.admin.class: Zorbus\PollBundle\Admin\OptionAdmin
+
+    zorbus_poll.poll.entity.class: Zorbus\PollBundle\Entity\Poll
+    zorbus_poll.option.entity.class: Zorbus\PollBundle\Entity\Option
+
+    zorbus_poll.poll.controller.class: SonataAdminBundle:CRUD
+    zorbus_poll.option.controller.class: SonataAdminBundle:CRUD
+
+services:
+    zorbus_poll.poll.admin:
+        class: %zorbus_poll.poll.admin.class%
+        arguments: [~, %zorbus_poll.poll.entity.class%, %zorbus_poll.poll.controller.class%]
+        calls:
+            - [setTranslationDomain, [PollBundle]]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Polls, label: Polls }
+    zorbus_poll.option.admin:
+        class: %zorbus_poll.option.admin.class%
+        arguments: [~, %zorbus_poll.option.entity.class%, %zorbus_poll.option.controller.class%]
+        calls:
+            - [setTranslationDomain, [PollBundle]]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Polls, label: Options }

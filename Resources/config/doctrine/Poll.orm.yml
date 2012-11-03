@@ -1,0 +1,50 @@
+Zorbus\PollBundle\Entity\Poll:
+    type: entity
+    table: zorbus_poll_poll
+    repositoryClass: Zorbus\PollBundle\Entity\PollRepository
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        question:
+            type: text
+            nullable: false
+        description:
+            type: text
+            nullable: true
+        lang:
+            type: string
+            length: 5
+            nullable: true
+            default: en_US
+        slug:
+            type: string
+            length: 255
+            gedmo:
+                slug:
+                    separator: '-'
+                    style: default
+                    fields:
+                        - question
+        enabled:
+            type: boolean
+            default: true
+            nullable: true
+        created_at:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updated_at:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+
+    oneToMany:
+        options:
+            targetEntity: Zorbus\PollBundle\Entity\Option
+            mappedBy: poll
+            orderBy:
+                position: ASC

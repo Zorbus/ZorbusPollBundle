@@ -1,0 +1,54 @@
+Zorbus\PollBundle\Entity\Option:
+    type: entity
+    table: zorbus_poll_option
+    repositoryClass: Zorbus\PollBundle\Entity\OptionRepository
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        option:
+            type: text
+            nullable: false
+        image:
+            type: string
+            length: 255
+            nullable: true
+        enabled:
+            type: boolean
+            default: true
+            nullable: true
+        position:
+            type: integer
+            default: 1
+            nullable: true
+            gedmo:
+                - sortablePosition
+        created_at:
+            type: datetime
+            nullable: true
+            gedmo:
+                timestampable:
+                    on: create
+        updated_at:
+            type: datetime
+            nullable: true
+            gedmo:
+                timestampable:
+                    on: update
+    lifecycleCallbacks:
+        prePersist: [preImageUpload]
+        preUpdate: [preImageUpload]
+        postPersist: [postImageUpload]
+        postUpdate: [postImageUpload]
+        postRemove: [postRemove]
+    manyToOne:
+        poll:
+            targetEntity: Zorbus\PollBundle\Entity\Poll
+            inversedBy: options
+            joinColumn:
+                name: poll_id
+                referencedColumnName: id
+                onDelete: CASCADE
+            gedmo:
+                - sortableGroup
