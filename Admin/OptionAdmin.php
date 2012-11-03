@@ -15,7 +15,7 @@ class OptionAdmin extends Admin
     {
         $formMapper
                 ->add('poll', null, array('required' => true, 'attr' => array('class' => 'span5 select2')))
-                ->add('option', 'textarea', array('required' => false, 'attr' => array('class' => 'ckeditor')))
+                ->add('answer', 'textarea', array('required' => false, 'attr' => array('class' => 'ckeditor')))
                 ->add('imageTemp', 'file', array('required' => false, 'label' => 'Image'))
                 ->add('position')
                 ->add('enabled', null, array('required' => false))
@@ -26,7 +26,7 @@ class OptionAdmin extends Admin
     {
         $datagridMapper
                 ->add('poll')
-                ->add('option')
+                ->add('answer')
         ;
     }
 
@@ -34,7 +34,7 @@ class OptionAdmin extends Admin
     {
         $listMapper
                 ->addIdentifier('poll')
-                ->addIdentifier('option')
+                ->addIdentifier('answer')
                 ->add('enabled')
         ;
     }
@@ -45,7 +45,7 @@ class OptionAdmin extends Admin
                 ->with('poll')
                 ->assertNotBlank()
                 ->end()
-                ->with('option')
+                ->with('answer')
                 ->assertNotBlank()
                 ->end()
         ;

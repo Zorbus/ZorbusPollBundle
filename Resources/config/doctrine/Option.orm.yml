@@ -7,7 +7,7 @@ Zorbus\PollBundle\Entity\Option:
             type: integer
             generator: { strategy: AUTO }
     fields:
-        option:
+        answer:
             type: text
             nullable: false
         image:

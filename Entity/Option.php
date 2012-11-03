@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Zorbus\PollBundle\Entity\Option
  */
-class Option
+class Option extends Base\Option
 {
     /**
      * @var integer $id
@@ -17,7 +17,7 @@ class Option
     /**
      * @var string $option
      */
-    private $option;
+    private $answer;
 
     /**
      * @var string $image
@@ -66,9 +66,9 @@ class Option
      * @param string $option
      * @return Option
      */
-    public function setOption($option)
+    public function setAnswer($answer)
     {
-        $this->option = $option;
+        $this->answer = $answer;
 
         return $this;
     }
@@ -78,9 +78,9 @@ class Option
      *
      * @return string
      */
-    public function getOption()
+    public function getAnswer()
     {
-        return $this->option;
+        return $this->answer;
     }
 
     /**

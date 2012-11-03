@@ -11,6 +11,6 @@ abstract class Poll
 {
     public function __toString()
     {
-        return $this->getQuestion();
+        return strip_tags($this->getQuestion());
     }
 }

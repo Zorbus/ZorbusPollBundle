@@ -13,7 +13,7 @@ abstract class Option
 
     public function __toString()
     {
-        return $this->getOption();
+        return strip_tags($this->getAnswer());
     }
 
     public function getImageTemp()
