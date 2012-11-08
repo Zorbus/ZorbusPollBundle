@@ -51,7 +51,7 @@ class BlockController extends Controller
             }
             else
             {
-                return $this->render('ZorbusMenuBundle:Block:pollResult.html.twig', array(
+                return $this->render('ZorbusPollBundle:Block:pollResult.html.twig', array(
                             'block' => $block, 'poll' => $poll, 'options' => $poll->getOptions()
                         ));
             }
@@ -60,7 +60,7 @@ class BlockController extends Controller
         {
             $poll = $this->getDoctrine()->getEntityManager()->getRepository('ZorbusPollBundle:Poll')->find($poll_id);
 
-            return $this->render('ZorbusMenuBundle:Block:poll.html.twig', array(
+            return $this->render('ZorbusPollBundle:Block:poll.html.twig', array(
                         'block' => $block, 'url' => $url, 'poll' => $poll
                     ));
         }

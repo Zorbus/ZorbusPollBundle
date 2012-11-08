@@ -1,0 +1,9 @@
+<div class="well">
+    <p>Thanks, for voting in the poll <strong>{{ poll }}</strong></p>
+    <p>Results:</p>
+    <ul>
+        {% for option in options %}
+            <li>{{ option|raw }}: {{ option.votes }}</li>
+        {% endfor %}
+    </ul>
+</div>

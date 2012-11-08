@@ -1,0 +1,25 @@
+<div class="well">
+    <h3>{{poll|raw}}</h3>
+    <form method="post" action="{{url}}?poll=" class="form-horizontal">
+        <input type="hidden" name="poll_option" value="" class="poll_option_{{poll.id}}" />
+        <div class="poll_options" data-toggle="buttons-radio">
+        {% for option in poll.options %}
+            <button type="button" data-value="{{option.id}}" class="btn btn-primary">{{option|raw}}</button>
+        {% endfor %}
+        </div>
+        <input type="submit" class="btn" value="Vote">
+    </form>
+</div>
+
+<style type="text/css">
+.poll_options button {
+    display: block !important;
+    margin: 0 0 7px !important;
+}
+</style>
+
+<script type="text/javascript">
+    $('.poll_options button').click(function(event){
+        $('.poll_option_{{ poll.id }}').val($(this).attr('data-value'));
+    });
+</script>
