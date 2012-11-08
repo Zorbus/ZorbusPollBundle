@@ -265,4 +265,67 @@ class Poll extends Base\Poll
     {
         return $this->options;
     }
+    /**
+     * @var string $title
+     */
+    private $title;
+
+    /**
+     * @var string $token
+     */
+    private $token;
+
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return Poll
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set token
+     *
+     * @param string $token
+     * @return Poll
+     */
+    public function setToken($token)
+    {
+        $this->token = $token;
+
+        return $this;
+    }
+
+    /**
+     * Get token
+     *
+     * @return string
+     */
+    public function getToken()
+    {
+        return $this->token;
+    }
+    /**
+     * @ORM\PrePersist
+     */
+    public function addToken()
+    {
+        $this->setToken(md5(time().$this->getTitle()));
+    }
 }

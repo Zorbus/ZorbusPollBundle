@@ -12,6 +12,7 @@ class PollAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->add('title')
             ->add('question', 'textarea', array('required' => false, 'attr' => array('class' => 'ckeditor')))
             ->add('lang')
             ->add('enabled', null, array('required' => false))
@@ -21,6 +22,7 @@ class PollAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
+            ->add('title')
             ->add('question')
         ;
     }
@@ -28,7 +30,7 @@ class PollAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('question')
+            ->addIdentifier('title')
             ->add('enabled')
         ;
     }
@@ -36,6 +38,9 @@ class PollAdmin extends Admin
     public function validate(ErrorElement $errorElement, $object)
     {
         $errorElement
+            ->with('title')
+                ->assertNotNull()
+            ->end()
             ->with('question')
                 ->assertNotNull()
             ->end()

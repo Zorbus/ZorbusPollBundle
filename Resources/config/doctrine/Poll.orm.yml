@@ -7,6 +7,10 @@ Zorbus\PollBundle\Entity\Poll:
             type: integer
             generator: { strategy: AUTO }
     fields:
+        title:
+            type: string
+            length: 255
+            nullable: false
         question:
             type: text
             nullable: false
@@ -18,6 +22,10 @@ Zorbus\PollBundle\Entity\Poll:
             length: 5
             nullable: true
             default: en_US
+        token:
+            type: string
+            length: 255
+            nullable: true
         slug:
             type: string
             length: 255
@@ -41,7 +49,8 @@ Zorbus\PollBundle\Entity\Poll:
             gedmo:
                 timestampable:
                     on: update
-
+    lifecycleCallbacks:
+        prePersist: [addToken]
     oneToMany:
         options:
             targetEntity: Zorbus\PollBundle\Entity\Option
