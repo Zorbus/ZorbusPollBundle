@@ -18,6 +18,10 @@ Zorbus\PollBundle\Entity\Option:
             type: boolean
             default: true
             nullable: true
+        votes:
+            type: integer
+            default: 0
+            nullable: true
         position:
             type: integer
             default: 1

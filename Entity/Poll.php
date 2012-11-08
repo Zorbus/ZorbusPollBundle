@@ -328,4 +328,32 @@ class Poll extends Base\Poll
     {
         $this->setToken(md5(time().$this->getTitle()));
     }
+    /**
+     * @var integer $votes
+     */
+    private $votes;
+
+
+    /**
+     * Set votes
+     *
+     * @param integer $votes
+     * @return Poll
+     */
+    public function setVotes($votes)
+    {
+        $this->votes = $votes;
+    
+        return $this;
+    }
+
+    /**
+     * Get votes
+     *
+     * @return integer 
+     */
+    public function getVotes()
+    {
+        return $this->votes;
+    }
 }

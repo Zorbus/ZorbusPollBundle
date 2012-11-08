@@ -254,4 +254,32 @@ class Option extends Base\Option
             unset($this->imageTemp);
         }
     }
+    /**
+     * @var integer $votes
+     */
+    private $votes;
+
+
+    /**
+     * Set votes
+     *
+     * @param integer $votes
+     * @return Option
+     */
+    public function setVotes($votes)
+    {
+        $this->votes = $votes;
+    
+        return $this;
+    }
+
+    /**
+     * Get votes
+     *
+     * @return integer 
+     */
+    public function getVotes()
+    {
+        return $this->votes;
+    }
 }

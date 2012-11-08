@@ -22,6 +22,10 @@ Zorbus\PollBundle\Entity\Poll:
             length: 5
             nullable: true
             default: en_US
+        votes:
+            type: integer
+            default: 0
+            nullable: true
         token:
             type: string
             length: 255
