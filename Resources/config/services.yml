@@ -8,6 +8,8 @@ parameters:
     zorbus_poll.poll.controller.class: SonataAdminBundle:CRUD
     zorbus_poll.option.controller.class: SonataAdminBundle:CRUD
 
+    zorbus_block.service.poll.class: Zorbus\PollBundle\Model\BlockPollConfig
+
 services:
     zorbus_poll.poll.admin:
         class: %zorbus_poll.poll.admin.class%
@@ -23,3 +25,9 @@ services:
             - [setTranslationDomain, [PollBundle]]
         tags:
             - { name: sonata.admin, manager_type: orm, group: Polls, label: Options }
+    zorbus_block.service.poll:
+        class: %zorbus_block.service.poll.class%
+        scope: prototype
+        arguments: ['@zorbus_block.block.admin', '@form.factory', '@http_kernel']
+        tags:
+            - { name: zorbus_block.block, category: Poll }
