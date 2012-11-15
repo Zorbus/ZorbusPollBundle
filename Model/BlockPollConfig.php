@@ -12,7 +12,7 @@ class BlockPollConfig extends BlockConfig
 
     public function __construct(AdminInterface $admin, FormFactory $formFactory, $httpKernel)
     {
-        parent::__construct('zorbus_block.service.poll', 'Poll Block', $admin, $formFactory);
+        parent::__construct('zorbus_poll.block.poll', 'Poll Block', $admin, $formFactory);
         $this->enabled = true;
         $this->themes = array(
             'ZorbusPollBundle:Block:poll' => 'Poll',
